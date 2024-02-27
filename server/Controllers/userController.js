@@ -40,4 +40,25 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser };
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    let user = await userModel.findOne({ email });
+
+    if (!user) return res.status(400).json("User doesn't exist");
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+
+    if (!isValidPassword) return res.status(400).json("Password is wrong");
+
+    const token = createToken(user._id);
+
+    res.status(200).json({ _id: user._id, name: user.name, email, token });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+module.exports = { registerUser, loginUser };
