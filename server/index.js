@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 const app = express();
@@ -8,7 +9,18 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, (req, res) => {
-  console.log(`Server running on port ${PORT}`);
+app.get("/", (req, res) => {
+  res.send("Welcome to our chat app APIs...");
 });
+
+const port = process.env.PORT || 8000;
+const url = process.env.MONGODB_URL;
+
+app.listen(port, (req, res) => {
+  console.log(`Server running on port ${port}`);
+});
+
+mongoose
+  .connect(url)
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((err) => console.log("MongoDB connection error ", err.message));
