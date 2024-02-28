@@ -2,20 +2,28 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
-  const { registerInfo, updateRegisterInfo } = useContext(AuthContext);
+  const {
+    registerInfo,
+    updateRegisterInfo,
+    registerUser,
+    registerError,
+    isRegisterLoading,
+  } = useContext(AuthContext);
 
   console.log(registerInfo);
   return (
-    <form action="">
+    <form action="" onSubmit={registerUser}>
       <div
         className="w-full flex items-center justify-center"
         style={{ height: "calc(100vh - 72px)" }}
       >
         <div className="w-[500px] flex flex-col items-start justify-center gap-3">
           <h1 className="font-bold text-2xl italic">Register</h1>
-          <div className="h-[50px] w-full bg-orange-300 text-red-800 flex items-center justify-center rounded-md font-semibold">
-            An error occured
-          </div>
+          {registerError?.error && (
+            <div className="h-[50px] w-full bg-orange-300 text-red-800 flex items-center justify-center rounded-md font-semibold">
+              {registerError?.message}
+            </div>
+          )}
           <input
             type="text"
             placeholder="Enter your name"
@@ -43,8 +51,11 @@ const Register = () => {
               updateRegisterInfo({ ...registerInfo, password: e.target.value })
             }
           />
-          <button className="w-full py-2 flex items-center justify-center font-bold text-lg bg-blue-600 rounded-md">
-            Register
+          <button
+            type="submit"
+            className="w-full py-2 flex items-center justify-center font-bold text-lg bg-blue-600 rounded-md"
+          >
+            {isRegisterLoading ? "Registering..." : "Register"}
           </button>
         </div>
       </div>
