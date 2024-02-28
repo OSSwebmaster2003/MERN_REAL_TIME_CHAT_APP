@@ -10,7 +10,6 @@ const Register = () => {
     isRegisterLoading,
   } = useContext(AuthContext);
 
-  console.log(registerInfo);
   return (
     <form action="" onSubmit={registerUser}>
       <div
