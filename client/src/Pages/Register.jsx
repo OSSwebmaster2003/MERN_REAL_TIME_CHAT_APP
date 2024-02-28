@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
 const Register = () => {
+  const { registerInfo, updateRegisterInfo } = useContext(AuthContext);
+
+  console.log(registerInfo);
   return (
     <form action="">
       <div
@@ -15,18 +21,27 @@ const Register = () => {
             placeholder="Enter your name"
             className="w-full px-2 py-2 outline-none bg-inherit border border-white rounded-md"
             autoComplete="off"
+            onChange={(e) =>
+              updateRegisterInfo({ ...registerInfo, name: e.target.value })
+            }
           />
           <input
             type="email"
             placeholder="Enter your email"
             className="w-full px-2 py-2 outline-none bg-inherit border border-white rounded-md"
             autoComplete="off"
+            onChange={(e) =>
+              updateRegisterInfo({ ...registerInfo, email: e.target.value })
+            }
           />
           <input
             type="password"
             placeholder="Enter your password"
             className="w-full px-2 py-2 outline-none bg-inherit border border-white rounded-md"
             autoComplete="off"
+            onChange={(e) =>
+              updateRegisterInfo({ ...registerInfo, password: e.target.value })
+            }
           />
           <button className="w-full py-2 flex items-center justify-center font-bold text-lg bg-blue-600 rounded-md">
             Register
