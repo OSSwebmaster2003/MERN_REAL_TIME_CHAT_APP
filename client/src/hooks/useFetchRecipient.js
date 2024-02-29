@@ -21,6 +21,8 @@ export const useFetchRecipientUser = (chat, user) => {
     };
 
     getUser();
+
+    // eslint-disable-next-line
   }, []);
 
   return { recipientUser, error };
