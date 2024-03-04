@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
-
 body {
   font-family: "Nunito", sans-serif;
   background: rgb(40, 40, 40);
@@ -51,10 +49,17 @@ body {
   z-index: 2;
 }
 .chat-box {
-  max-height: calc(100vh - 10rem);
+  width: calc(100vw - 560px);
+  height: calc(100vh - 10rem);
   overflow-y: auto;
   background: rgb(25, 25, 25);
   border-radius: 10px;
+}
+.chat-header {
+  background: rgb(31, 30, 30);
+}
+.message {
+  background: rgb(40, 40, 40);
 }
 .notification-time {
   margin-top: 0.2rem;

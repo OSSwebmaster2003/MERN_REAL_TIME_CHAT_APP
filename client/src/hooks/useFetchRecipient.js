@@ -1,3 +1,33 @@
+// import { useEffect, useState } from "react";
+// import { baseUrl, getRequest } from "../utils/services";
+
+// export const useFetchRecipientUser = (chat, user) => {
+//   const [recipientUser, setRecipientUser] = useState(null);
+//   const [error, setError] = useState(null);
+
+//   const recipientId = chat?.members?.find((id) => id !== user?._id);
+
+//   useEffect(() => {
+//     const getUser = async () => {
+//       if (!recipientId) return null;
+
+//       const response = await getRequest(`${baseUrl}/users/find/${recipientId}`);
+
+//       if (response.error) {
+//         return setError(response);
+//       }
+
+//       setRecipientUser(response);
+//     };
+
+//     getUser();
+
+//     // eslint-disable-next-line
+//   }, [chat]);
+
+//   return { recipientUser, error };
+// };
+
 import { useEffect, useState } from "react";
 import { baseUrl, getRequest } from "../utils/services";
 
@@ -11,7 +41,7 @@ export const useFetchRecipientUser = (chat, user) => {
     const getUser = async () => {
       if (!recipientId) return null;
 
-      const response = await getRequest(`${baseUrl}/users/${recipientId}`);
+      const response = await getRequest(`${baseUrl}/users/find/${recipientId}`);
 
       if (response.error) {
         return setError(response);
@@ -21,9 +51,7 @@ export const useFetchRecipientUser = (chat, user) => {
     };
 
     getUser();
-
-    // eslint-disable-next-line
-  }, []);
+  }, [recipientId]);
 
   return { recipientUser, error };
 };

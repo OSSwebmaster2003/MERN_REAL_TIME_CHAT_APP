@@ -33,7 +33,7 @@ export const getRequest = async (url) => {
     let message = "An error occured...";
 
     if (data?.message) {
-      message = data?.message;
+      message = data.message;
     }
 
     return { error: true, message };
