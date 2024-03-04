@@ -48,6 +48,9 @@ body {
   left: 15px;
   z-index: 2;
 }
+.chat-container {
+  height: calc(100% - 40px);
+}
 .chat-box {
   width: calc(100vw - 560px);
   height: calc(100vh - 10rem);
