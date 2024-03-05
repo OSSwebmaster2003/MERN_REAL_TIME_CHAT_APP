@@ -37,8 +37,8 @@ const ChatBox = () => {
                 key={index}
                 className={`${
                   message?.senderId === user?._id
-                    ? "message flex flex-col items-end justify-end rounded-md p-2 self-end"
-                    : "message flex flex-col items-start justify-start rounded-md self-start"
+                    ? "message flex flex-col items-end justify-end rounded-md p-2 self-end bg-green-500"
+                    : "message flex flex-col items-end justify-start rounded-md p-2 self-start bg-[rgb(40,40,40)]"
                 }`}
               >
                 <span className="text-sm ">{message.text}</span>
