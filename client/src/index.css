@@ -61,6 +61,19 @@ body {
 .chat-header {
   background: rgb(31, 30, 30);
 }
+.notification {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.notification.not-read {
+  background: rgb(24, 130, 151);
+}
 .notification-time {
   margin-top: 0.2rem;
   font-size: 12px;
@@ -69,16 +82,16 @@ body {
 .notification-count {
   display: flex;
   background: #00bd9b;
-  height: 25px;
-  width: 25px;
-  font-size: 14px;
+  height: 18px;
+  width: 18px;
+  font-size: 10px;
   font-weight: 700;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
   position: absolute;
   top: -10px;
-  right: -15px;
+  right: -10px;
 }
 .this-user-notifications {
   display: flex;
